@@ -1,0 +1,116 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "eslint:recommended",
+        "airbnb"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "promise",
+        "react",
+        "jest"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "react/jsx-indent": [
+            "error",
+            4
+        ],
+        "react/jsx-indent-props": [
+            "error",
+            4
+        ],
+        "react/prop-types": 0,
+        "promise/prefer-await-to-then": "error",
+        "curly": [
+            "error",
+            "multi-line"
+        ],
+        "comma-dangle": [
+            "error",
+            "always"
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            },
+            {
+                "blankLine": "always",
+                "prev": [
+                    "const",
+                    "let",
+                    "var"
+                ],
+                "next": "*"
+            },
+            {
+                "blankLine": "any",
+                "prev": [
+                    "const",
+                    "let",
+                    "var"
+                ],
+                "next": [
+                    "const",
+                    "let",
+                    "var"
+                ]
+            },
+            {
+                "blankLine": "always",
+                "prev": "return",
+                "next": "*"
+            },
+            {
+                "blankLine": "always",
+                "prev": "if",
+                "next": [
+                    "*"
+                ]
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "babel-module": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".es",
+                    ".es6",
+                    ".mjs",
+                    ".icon.svg",
+                    ".svg"
+                ],
+                "alias": {
+                    "^~test/(.*)": "./test/\\1",
+                    "^~icons/(.*)": "./src/components/Foundation/Icons/\\1",
+                    "^~(.*)": "./src/\\1"
+                }
+            }
+        }
+    }
+}
