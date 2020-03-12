@@ -1,0 +1,24 @@
+version: "2"
+services:
+    app:
+        build: ./app
+        expose:
+            - 3000
+        ports:
+            - 3000:3000
+        volumes:
+            - ./app/src:/srv/app/client/src
+            - ./app/public:/srv/app/client/public
+        links:
+            - server
+        command: npm start
+    server:
+        build: ./server
+        expose:
+            - 8000
+        ports:
+            - 8000:8000
+            - 27017:27017
+        volumes:
+            - ./server:/srv/app/server
+        command: npm run dev

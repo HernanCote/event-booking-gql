@@ -1,8 +1,0 @@
-{
-    "env": {
-        "MONGO_USER": "hcote",
-        "MONGO_PASSWORD": "Melapela34",
-        "DATABASE": "events-booking",
-        "SECRET": "superlongsecretkey"
-    }
-}

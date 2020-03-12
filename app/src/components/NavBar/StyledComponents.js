@@ -22,7 +22,7 @@ const Logo = styled.div`
 `;
 
 const NavItems = styled.nav`
-    margin-left: 1.5rem;
+    margin: 0 1rem 0 auto;
 `;
 
 const ItemsList = styled.ul`
