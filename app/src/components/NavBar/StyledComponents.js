@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink as BaseNavLink } from 'react-router-dom';
 
 import { H1 } from '../Foundation';
@@ -30,19 +30,35 @@ const ItemsList = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+    align-items: center;
 `;
 
 const ListItem = styled.li`
-    margin: 0 1rem;
+    margin: 0 0.5rem;
+`;
+
+const commonStyles = css`
+    background: #172839;
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: inherit;
+    cursor: pointer;
+
+    :active, :hover, &.active {
+        color: #172839;
+        background: #fff;
+    }
 `;
 
 const NavLink = styled(BaseNavLink)`
-    text-decoration: none;
-    color: #EDE387;
+    ${commonStyles}
+`;
 
-    :active, :hover, &.active {
-        color: #7C8C68;
-    }
+const NavButton = styled.button`
+    ${commonStyles}
 `;
 
 export {
@@ -51,5 +67,6 @@ export {
     NavItems,
     ItemsList,
     ListItem,
-    NavLink
+    NavLink,
+    NavButton,
 };

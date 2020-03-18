@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { H1 } from '../Foundation';
 
 import AuthContext from '../../context/auth-context';
@@ -9,42 +9,45 @@ import {
     NavItems,
     ItemsList,
     ListItem,
-    NavLink
+    NavLink,
+    NavButton,
 } from './StyledComponents';
 
-const NavBar = ({ className }) => (
-    <AuthContext.Consumer>
-        {({ token }) => {
-            return (
-                <Root className={className}>
-                    <Logo>
-                        <NavLink to="/">
-                            <H1>EasyEvent</H1>
-                        </NavLink>
-                    </Logo>
-                    <NavItems>
-                        <ItemsList>
+const NavBar = ({ className }) => {
+    const { token, logout } = useContext(AuthContext);
 
+    return (
+        <Root className={className}>
+            <Logo>
+                <H1>EasyEvent</H1>
+            </Logo>
+            <NavItems>
+                <ItemsList>
+                    <ListItem>
+                        <NavLink to="/events">Events</NavLink>
+                    </ListItem>
+                    {!token && (
+                        <ListItem>
+                            <NavLink to="/auth">Login</NavLink>
+                        </ListItem>
+                    )}
+                    {token && (
+                        <>
                             <ListItem>
-                                <NavLink to="/events">Events</NavLink>
+                                <NavLink to="/bookings">Bookings</NavLink>
                             </ListItem>
-                            {token && (
-                                <ListItem>
-                                    <NavLink to="/bookings">Bookings</NavLink>
-                                </ListItem>
-                            )}
-                            {!token && (
-                                <ListItem>
-                                    <NavLink to="/auth">Login</NavLink>
-                                </ListItem>
-                            )}
-                        </ItemsList>
-                    </NavItems>
-                </Root>
-            );
-        }}
+                            <ListItem>
+                                <NavButton onClick={logout}>
+                                    Logout
+                                </NavButton>
+                            </ListItem>
+                        </>
+                    )}
+                </ItemsList>
+            </NavItems>
+        </Root>
+    );
+};
 
-    </AuthContext.Consumer>
-);
 
 export default NavBar;

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
 import {
-    FormButton,
     FormActions,
     Input,
     Label,
     FormItem,
     FormRoot,
 } from './StyledComponents';
+
+import { Button } from '../Foundation';
 
 const AuthForm = ({
     className,
@@ -40,8 +41,8 @@ const AuthForm = ({
                 <Input type="password" id="password" ref={passwordEl} />
             </FormItem>
             <FormActions className="form-actions">
-                <FormButton type="submit">{isLogin ? 'Login' : 'Signup'}</FormButton>
-                <FormButton type="button" onClick={switchModeHandler}>Switch to {isLogin ? 'Signup' : 'Login'}</FormButton>
+                <Button type="submit">{isLogin ? 'Login' : 'Signup'}</Button>
+                <Button type="button" onClick={switchModeHandler}>Switch to {isLogin ? 'Signup' : 'Login'}</Button>
             </FormActions>
         </FormRoot>
     );
