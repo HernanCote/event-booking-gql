@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+    console.log('request received');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -33,10 +34,23 @@ app.use('/graphql',
     })
 );
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-gzs5m.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`)
-    .then(() => {
-        app.listen(8000);
-    })
-    .catch(err => {
-        console.log(err);
+mongoose.connect(
+    `mongodb://mongo/${process.env.DATABASE}`,
+    { useNewUrlParser: true }
+).then(() => {
+    const PORT = process.env.PORT || 8000;
+    console.log(`Started server at port ${PORT}`);
+    app.listen(PORT);
+}).catch(err => {
+    console.log(err);
+});
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message,
+            statusCode: error.status
+        }
     });
+});

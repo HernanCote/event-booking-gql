@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import AuthForm from '../../components/AuthForm';
+import authContext from '../../context/auth-context';
 
 const AuthIndex = () => {
+
+    const contextType = useContext(authContext);
+
     const submitHandler = async ({ email, password, isLogin }) => {
 
         if (email.trim().length === 0 || password.trim().length === 0) {
@@ -50,7 +54,10 @@ const AuthIndex = () => {
             if (errors) {
                 throw new Error(errors[0].message);
             }
-            console.log('Successful request', data);
+            const { token, userId, tokenExpiration } = data.login;
+            if (token) {
+                contextType.login(token, userId, tokenExpiration);
+            }
         }
         catch (err) {
             console.log(err);
