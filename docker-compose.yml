@@ -29,5 +29,9 @@ services:
             - 27017:27017
     adminmongo:
         image: "mrvautin/adminmongo"
+        environment: 
+            - HOST=0.0.0.0
+            - DB_PORT=27017
+            - DB_HOST=mongo
         ports: 
             - 1234:1234

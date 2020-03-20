@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { H1 } from '../Foundation';
 
 const Root = styled.div`
+    z-index: 100;
     width: 90%;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
