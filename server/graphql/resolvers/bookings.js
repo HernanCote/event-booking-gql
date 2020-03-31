@@ -12,7 +12,7 @@ module.exports = {
             throw new Error('Unauthenticated - user does not have permission to search for bookings');
         }
         try {
-            const bookings = await Booking.find();
+            const bookings = await Booking.find({ user: req.userId });
             return bookings.map(booking => {
                 return toBookingDTO(booking);
             });
@@ -40,7 +40,7 @@ module.exports = {
             throw err;
         }
     },
-    cancelBooking: async args => {
+    cancelBooking: async (args, req) => {
         if (!req.isAuth) {
             throw new Error('Unauthenticated - user does not have permission to cancel bookings');
         }

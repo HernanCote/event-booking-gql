@@ -12,9 +12,9 @@ import {
 const Modal = ({
     title,
     children,
-    canCancel,
+    canClose,
     canConfirm,
-    onCancel,
+    onClose,
     onConfirm,
     confirmText,
 }) => (
@@ -24,7 +24,7 @@ const Modal = ({
             </Title>
             <Content>{children}</Content>
             <Actions>
-                {canCancel && <Button onClick={onCancel}>Cancel</Button>}
+                {canClose && <Button onClick={onClose}>Close</Button>}
                 {canConfirm && <Button onClick={onConfirm}>{confirmText}</Button>}
             </Actions>
         </Root>

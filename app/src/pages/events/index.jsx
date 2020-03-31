@@ -231,9 +231,9 @@ const EventsIndex = () => {
             {isCreatingEvent && (
                 <Modal
                     title="Add Event"
-                    onCancel={modalCancelHandler}
+                    onClose={modalCancelHandler}
                     onConfirm={modalConfirmHandler}
-                    canCancel
+                    canClose
                     canConfirm
                     confirmText="Confirm"
                 >
@@ -249,8 +249,8 @@ const EventsIndex = () => {
                 <Modal
                     title={selectedEvent.title}
                     canConfirm
-                    canCancel
-                    onCancel={modalCancelHandler}
+                    canClose
+                    onClose={modalCancelHandler}
                     onConfirm={bookEventHandler}
                     confirmText={token ? "Book" : 'Confirm'}
                 >
