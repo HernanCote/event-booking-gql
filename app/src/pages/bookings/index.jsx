@@ -65,13 +65,16 @@ const BookingsIndex = () => {
         setIsLoading(true)
         const requestBody = {
             query: `
-                mutation {
-                    cancelBooking(bookingId: "${bookingId}") {
+                mutation CancelBooking($bookingId: ID!) {
+                    cancelBooking(bookingId: $bookingId) {
                         _id
                         title
                     }
                 }
             `,
+            variables: {
+                bookingId
+            },
         };
 
         try {

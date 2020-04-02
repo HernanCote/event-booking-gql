@@ -22,6 +22,7 @@ module.exports = {
         }
     },
     bookEvent: async (args, req) => {
+        console.log('booking');
         if (!req.isAuth) {
             throw new Error('Unauthenticated - user does not have permission to book events');
         }

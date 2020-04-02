@@ -119,8 +119,8 @@ const EventsIndex = () => {
 
         const requestBody = {
             query: `
-                mutation {
-                    createEvent(eventInput: {title: "${title}", description: "${description}", price: ${price}, date: "${date}"}) {
+                mutation CreateEvent($title: String!, $description: String!, $price: Float!, $date: String!) {
+                    createEvent(eventInput: {title: $title, description: $description, price: $price, date: $date}) {
                         _id
                         title
                         description
@@ -129,6 +129,12 @@ const EventsIndex = () => {
                     }
                 }
             `,
+            variables: {
+                title,
+                description,
+                price,
+                date,
+            },
         };
 
         try {
@@ -181,14 +187,17 @@ const EventsIndex = () => {
 
         const requestBody = {
             query: `
-                mutation {
-                    bookEvent(eventId: "${selectedEvent._id}") {
+                mutation BookEvent($eventId: ID!) {
+                    bookEvent(eventId: $eventId) {
                         _id
                         createdAt
                         updatedAt
                     }
                 }
             `,
+            variables: {
+                eventId: selectedEvent._id,
+            },
         };
 
         try {
