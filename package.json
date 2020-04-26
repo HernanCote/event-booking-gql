@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up"
+    "server": "node app.js --prefix server",
+    "client": "npm start --prefix app",
+    "dev": "npm install && npm install --prefix app && npm install --prefix server && concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/HernanCote/event-booking-gql/issues"
   },
-  "homepage": "https://github.com/HernanCote/event-booking-gql#readme"
+  "homepage": "https://github.com/HernanCote/event-booking-gql#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
 }
