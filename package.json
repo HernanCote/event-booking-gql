@@ -1,0 +1,19 @@
+{
+  "name": "event-booking-gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HernanCote/event-booking-gql.git"
+  },
+  "author": "hernan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HernanCote/event-booking-gql/issues"
+  },
+  "homepage": "https://github.com/HernanCote/event-booking-gql#readme"
+}
